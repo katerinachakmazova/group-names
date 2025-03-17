@@ -1,17 +1,11 @@
 'use strict';
 
 
-function checkMassiv(mas){
-  const reg = /^([A-Z]{2}|[a-z]{2})20[0-9]{2}-*[0-9]*$/;
-  for(let i in mas){
-    if(reg.test(mas[i])){
-      console.log(`Success in ${mas[i]}`);
-    }
-    else {
-      console.log(`Error in ${mas[i]}`);
-    }
-  }
+function checkForRegExp(el){
+  const reg = /^(F[DEM]|f[dem])20\d{2}(-\d+)?$/;
+  return reg.test(el);
 }
+
 const arrGroups = [
   'FE2021-5',
   'Fe2020-2',
@@ -24,7 +18,15 @@ const arrGroups = [
   'FE2008-52',
   'Fm2008-23',
   'FM2022-1',
-   'FM2022-1k'
+  'FM2022-1k'
   ];
-  checkMassiv(arrGroups);
+
+  for(let i of arrGroups){
+    if(checkForRegExp(i)){
+      console.log(`Success in ${i}`);
+    } else {
+      console.log(`Error in ${i}`);
+    }
+  }
+
 
